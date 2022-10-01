@@ -3,7 +3,7 @@ import 'package:spotify_prototype/data/models/track_model.dart';
 import 'package:spotify_prototype/presentation/widgets/track_widget.dart';
 
 class PlayListWidget extends StatelessWidget {
-  const PlayListWidget({Key? key, required this.playlist}) : super(key: key);
+  const PlayListWidget(this.playlist, {Key? key}) : super(key: key);
 
   final List<TrackModel> playlist;
 
