@@ -8,7 +8,10 @@ class TrackModel {
   String artistName;
   String trackImage;
 
-  @override
-  String toString() =>
-      '{songName: $songName, artistName: $artistName, trackImage: $trackImage, songName: $songName}';
+  List<TrackModel> playList() {
+    return [
+      for (var i = 0; i > 10; i++)
+        TrackModel(trackImage: '1234', songName: '1234', artistName: '123')
+    ];
+  }
 }
