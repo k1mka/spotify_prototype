@@ -8,11 +8,20 @@ class TrackWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        radius: 28,
-        backgroundImage: NetworkImage(trackModel.trackImage),
-      ),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(12),
+          child: ListTile(
+            title: Text(trackModel.artistName),
+            subtitle: Text(trackModel.songName),
+            leading: CircleAvatar(
+              radius: 28,
+              backgroundImage: NetworkImage(trackModel.trackImage),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

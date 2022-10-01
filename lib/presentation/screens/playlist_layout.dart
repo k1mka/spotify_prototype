@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spotify_prototype/presentation/widgets/playlist_widget.dart';
 
 class PlaylistLayout extends StatefulWidget {
   const PlaylistLayout({Key? key}) : super(key: key);
@@ -10,6 +11,13 @@ class PlaylistLayout extends StatefulWidget {
 class _PlaylistLayoutState extends State<PlaylistLayout> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.green,
+          title: const Text('Playlist'),
+        ),
+        body: PlayListWidget(
+          playlist: [],
+        ));
   }
 }

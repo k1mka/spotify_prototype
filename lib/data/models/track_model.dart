@@ -10,5 +10,5 @@ class TrackModel {
 
   @override
   String toString() =>
-      '{title: $trackImage, author: $songName, photoIcon: $artistName}';
+      '{songName: $songName, artistName: $artistName, trackImage: $trackImage, songName: $songName}';
 }
