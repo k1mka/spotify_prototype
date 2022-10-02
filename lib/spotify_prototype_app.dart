@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'presentation/screens/playlist_screen.dart';
+import 'presentation/screens/playlist_screen/playlist_screen.dart';
 
 class SpotifyPrototypeApp extends StatelessWidget {
   const SpotifyPrototypeApp({Key? key}) : super(key: key);

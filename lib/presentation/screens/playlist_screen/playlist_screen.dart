@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_prototype/presentation/screens/playlist_layout.dart';
+import 'package:spotify_prototype/presentation/screens/playlist_screen/playlist_layout.dart';
 
 class PlayListScreen extends StatefulWidget {
   const PlayListScreen({Key? key}) : super(key: key);
