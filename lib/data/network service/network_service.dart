@@ -1,0 +1,21 @@
+import 'package:spotify_prototype/data/models/track_model.dart';
+
+abstract class NetworkService {
+  Future<List<TrackModel>> fetchModel();
+}
+
+class ServiceImpl extends NetworkService {
+  final artistName = 'Kiss';
+  final songName = 'I was made for loving you baby';
+  final trackImage =
+      'https://cdns-images.dzcdn.net/images/artist/d841e3ff7379c9272005e53f1c46f5b9/500x500.jpg';
+
+  @override
+  Future<List<TrackModel>> fetchModel() async => [
+        for (var i = 0; i < 10; i++)
+          TrackModel(
+              trackImage: trackImage,
+              artistName: songName,
+              songName: artistName)
+      ];
+}
