@@ -7,7 +7,7 @@ import 'data/repository/repository.dart';
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
-  final dataService = ServiceImpl();
+  final dataService = MockedServiceImpl();
   getIt.registerSingleton<NetworkService>(dataService);
   getIt.registerSingleton<Repository>(
     RepoImpl(dataService),
