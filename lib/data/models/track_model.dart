@@ -1,14 +1,14 @@
 class TrackModel {
-  TrackModel(
-      {required this.artistName,
-      required this.songName,
-      required this.trackImage});
+  TrackModel({
+    required this.artistName,
+    required this.songName,
+    required this.trackImage,
+  });
 
-  String songName;
-  String artistName;
-  String trackImage;
+  final String songName;
+  final String artistName;
+  final String trackImage;
 
   @override
-  String toString() =>
-      '{artistName: $artistName, songName: $songName, trackImage: $trackImage}';
+  String toString() => 'TrackModel{songName: $songName, artistName: $artistName, trackImage: $trackImage}';
 }
