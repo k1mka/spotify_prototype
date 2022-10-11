@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotify_prototype/presentation/screens/likest_screen/likest_layout.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_events.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_states.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/traclist_bloc.dart';
@@ -26,6 +27,21 @@ class _PlaylistLayoutState extends State<PlaylistLayout> {
         backgroundColor: Colors.green,
         title: const Text('Playlist'),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.red,
+        currentIndex: 0,
+        items: [
+          BottomNavigationBarItem(
+              icon: IconButton(onPressed: () {}, icon: const Icon(Icons.play_arrow)), label: 'Playlist'),
+          BottomNavigationBarItem(
+              icon: IconButton(
+                  onPressed: () =>
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LikestLayout())),
+                  icon: const Icon(Icons.favorite_border)),
+              label: 'Likest')
+        ],
+      ),
       body: Center(
         child: BlocBuilder<PLayListBloc, PlayListState>(
           builder: (context, state) {
@@ -33,9 +49,8 @@ class _PlaylistLayoutState extends State<PlaylistLayout> {
             if (state is ErrorTrack) return const Text('Error loading');
             if (state is LoadingTrack) return const Center(child: CircularProgressIndicator());
             if (state is LoadedTrack) {
-              return ListView.separated(
-                itemBuilder: (_, __) => const Divider(thickness: 4),
-                separatorBuilder: (__, index) => TrackWidget(trackModel: state.playList[index]),
+              return ListView.builder(
+                itemBuilder: (_, index) => TrackWidget(trackModel: state.playList[index]),
                 itemCount: state.playList.length,
               );
             }
