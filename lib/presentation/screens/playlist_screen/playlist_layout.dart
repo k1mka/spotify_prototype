@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spotify_prototype/presentation/screens/likest_screen/likest_layout.dart';
+import 'package:spotify_prototype/presentation/screens/likest_screen/likest_screen.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_events.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_states.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/traclist_bloc.dart';
@@ -17,7 +17,7 @@ class _PlaylistLayoutState extends State<PlaylistLayout> {
   @override
   void initState() {
     super.initState();
-    context.read<PLayListBloc>().add(LoadingTrackEvent());
+    context.read<PlayListBloc>().add(LoadingTrackEvent('Kanye West', 20));
   }
 
   @override
@@ -33,17 +33,26 @@ class _PlaylistLayoutState extends State<PlaylistLayout> {
         currentIndex: 0,
         items: [
           BottomNavigationBarItem(
-              icon: IconButton(onPressed: () {}, icon: const Icon(Icons.play_arrow)), label: 'Playlist'),
+            label: 'Playlist',
+            icon: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.play_arrow),
+            ),
+          ),
           BottomNavigationBarItem(
-              icon: IconButton(
-                  onPressed: () =>
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LikestLayout())),
-                  icon: const Icon(Icons.favorite_border)),
-              label: 'Likest')
+            label: 'Likest',
+            icon: IconButton(
+              icon: const Icon(Icons.favorite_border),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LikestScreen()),
+              ),
+            ),
+          )
         ],
       ),
       body: Center(
-        child: BlocBuilder<PLayListBloc, PlayListState>(
+        child: BlocBuilder<PlayListBloc, PlayListState>(
           builder: (context, state) {
             if (state is InitialState) return const Center(child: Text('expectation'));
             if (state is ErrorTrack) return const Text('Error loading');

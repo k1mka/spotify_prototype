@@ -15,8 +15,8 @@ class PlayListScreen extends StatefulWidget {
 class _PlayListScreenState extends State<PlayListScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<PLayListBloc>(
-      create: (_) => PLayListBloc(getIt<Repository>()),
+    return BlocProvider<PlayListBloc>(
+      create: (_) => PlayListBloc(getIt<Repository>()),
       child: const PlaylistLayout(),
     );
   }
