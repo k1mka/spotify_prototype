@@ -1,7 +1,10 @@
 import 'package:spotify_prototype/data/models/track_model.dart';
 
 abstract class NetworkService {
-  Future<List<TrackModel>> fetchModel();
+  Future<List<TrackModel>> fetchModel({
+    required String search,
+    required int limit,
+  });
 }
 
 class MockedServiceImpl extends NetworkService {
@@ -12,11 +15,14 @@ class MockedServiceImpl extends NetworkService {
   static const numberOfMockedData = 10;
 
   @override
-  Future<List<TrackModel>> fetchModel() async => [
+  Future<List<TrackModel>> fetchModel({
+    required String search,
+    required int limit,
+  }) async =>
+      [
         for (var i = 0; i < numberOfMockedData; i++)
           TrackModel(
-            trackImage: trackImage,
-            artistName: songName,
+            artistNames: [songName],
             songName: artistName,
           ),
       ];
