@@ -1,14 +1,14 @@
 class TrackModel {
   TrackModel({
-    required this.artistName,
+    required this.artistNames,
     required this.songName,
-    required this.trackImage,
   });
 
   final String songName;
-  final String artistName;
-  final String trackImage;
+  final List<String> artistNames;
+
+  String get artistsNamesFormatted => artistNames.join(', ');
 
   @override
-  String toString() => 'TrackModel{songName: $songName, artistName: $artistName, trackImage: $trackImage}';
+  String toString() => 'TrackModel{songName: $songName, artistName: $artistNames}';
 }
