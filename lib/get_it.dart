@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:spotify_prototype/data/network_services/mocked_network_service.dart';
-
-import 'data/network_services/network_service.dart';
+import 'package:spotify_prototype/data/network_services/network_service.dart';
 import 'data/repository/repo_impl.dart';
 import 'data/repository/repository.dart';
 

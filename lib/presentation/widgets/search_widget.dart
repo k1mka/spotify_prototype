@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_events.dart';
+import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/traclist_bloc.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({Key? key}) : super(key: key);
@@ -10,14 +13,18 @@ class SearchWidget extends StatefulWidget {
 class _SearchWidgetState extends State<SearchWidget> {
   final controller = TextEditingController();
 
-  void textListener() => print(controller.text);
-
   @override
   void initState() {
     controller.addListener(() {
-      textListener();
+      if (controller.text.isNotEmpty) {
+        context.read<PlayListBloc>().add(SearchTrackEvent(controller.text, 20));
+      }
     });
+    super.initState();
+    // инит стейт
   }
+
+  // запрос не в начале
 
   @override
   Widget build(BuildContext context) {

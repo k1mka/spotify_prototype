@@ -15,12 +15,6 @@ class PlaylistLayout extends StatefulWidget {
 
 class _PlaylistLayoutState extends State<PlaylistLayout> {
   @override
-  void initState() {
-    super.initState();
-    context.read<PlayListBloc>().add(LoadingTrackEvent('Kanye West', 20));
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -39,7 +33,14 @@ class _PlaylistLayoutState extends State<PlaylistLayout> {
           children: [
             BlocBuilder<PlayListBloc, PlayListState>(
               builder: (context, state) {
-                if (state is InitialState) return const Center(child: Text('expectation'));
+                if (state is InitialState) {
+                  return const Center(
+                    child: Text(
+                      'Pleas, enter an artist in the input field',
+                      style: TextStyle(color: Colors.green),
+                    ),
+                  );
+                }
                 if (state is ErrorTrack) return const Text('Error loading');
                 if (state is LoadingTrack) return const Center(child: CircularProgressIndicator());
                 if (state is LoadedTrack) {
