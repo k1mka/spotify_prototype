@@ -1,8 +1,8 @@
 abstract class TrackEvent {}
 
-class LoadingTrackEvent extends TrackEvent {
+class SearchTrackEvent extends TrackEvent {
   final String search;
   final int limit;
 
-  LoadingTrackEvent(this.search, this.limit);
+  SearchTrackEvent(this.search, this.limit);
 }
