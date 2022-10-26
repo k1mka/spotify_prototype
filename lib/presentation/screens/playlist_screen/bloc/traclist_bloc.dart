@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_prototype/data/repository/repository.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_events.dart';
@@ -10,7 +11,11 @@ class PlayListBloc extends Bloc<TrackEvent, PlayListState> {
     on<SearchTrackEvent>((event, emit) async {
       emit(LoadingTrack());
 
-      emit(LoadedTrack(await repository.fetchTrack(search: event.search, limit: event.limit)));
+      try {
+        emit(LoadedTrack(await repository.fetchTrack(search: event.search, limit: event.limit)));
+      } catch (e) {
+        emit(ErrorTrack(e));
+      }
     });
   }
 }
