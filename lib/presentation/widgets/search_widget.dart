@@ -21,10 +21,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       }
     });
     super.initState();
-    // инит стейт
   }
-
-  // запрос не в начале
 
   @override
   Widget build(BuildContext context) {
