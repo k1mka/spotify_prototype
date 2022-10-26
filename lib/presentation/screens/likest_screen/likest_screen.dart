@@ -6,6 +6,7 @@ class LikestScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // todo: add Bloc
     return const LikestLayout();
   }
 }
