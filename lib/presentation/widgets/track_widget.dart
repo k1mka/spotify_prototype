@@ -12,29 +12,6 @@ class TrackWidget extends StatefulWidget {
 }
 
 class _TrackWidgetState extends State<TrackWidget> {
-  static const likedKey = 'liked_key';
-  bool liked = false;
-
-  @override
-  void initState() {
-    _restorePersistedPreferences();
-    super.initState();
-  }
-
-  void _restorePersistedPreferences() async {
-    var preferences = await SharedPreferences.getInstance();
-    var liked = preferences.getBool(likedKey);
-    setState(() {
-      this.liked = liked!;
-    });
-  }
-
-  void _persistPreferences() async {
-    setState(() => liked = !liked);
-    var preferences = await SharedPreferences.getInstance();
-    preferences.setBool(likedKey, liked);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,13 +22,8 @@ class _TrackWidgetState extends State<TrackWidget> {
             title: Text(widget.trackModel.artistsNamesFormatted),
             subtitle: Text(widget.trackModel.songName),
             trailing: IconButton(
-              icon: Icon(
-                liked ? Icons.favorite : Icons.favorite_border,
-                color: liked ? Colors.red : Colors.grey,
-              ),
-              onPressed: () {
-                _persistPreferences();
-              },
+              icon: Icon(Icons.favorite_border),
+              onPressed: () {},
             ),
             selected: true,
           ),
