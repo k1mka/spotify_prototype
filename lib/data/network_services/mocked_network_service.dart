@@ -1,11 +1,5 @@
 import 'package:spotify_prototype/data/models/track_model.dart';
-
-abstract class NetworkService {
-  Future<List<TrackModel>> fetchModel({
-    required String search,
-    required int limit,
-  });
-}
+import 'package:spotify_prototype/data/network_services/network_service.dart';
 
 class MockedServiceImpl extends NetworkService {
   final artistName = 'Kiss';
