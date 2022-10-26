@@ -13,6 +13,8 @@ class SearchWidget extends StatefulWidget {
 class _SearchWidgetState extends State<SearchWidget> {
   final controller = TextEditingController();
 
+  // TODO: Add debouncing
+
   @override
   void initState() {
     controller.addListener(() {

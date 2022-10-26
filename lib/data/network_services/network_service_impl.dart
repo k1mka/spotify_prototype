@@ -6,6 +6,7 @@ import 'package:spotify_prototype/data/network_services/network_service.dart';
 class NetworkServiceImpl extends NetworkService {
   static const tokenValue =
       'BQD_xNQ01yUpD-pWMX-XKyLZXJUsY2AekMlAdrCZ2S7soS8piQi2_sk3E247DnNVybaDzCv8L40dwbgKlnGgpRpQMte49WMqphFVAa5QGJc1wVeNcc85RcxkqhBX70Lmj_AdCGTzp8CZ-vK46LunEmxuTEq1tJGNIOhhgJG3Yl0Ny0dU2oeBB8iTJLV0v5jncN0nNvk';
+  // TODO: figure out how to automatically receive a new token
   static const authorizationKey = 'Authorization';
   static const authHeadersMap = {authorizationKey: 'Bearer $tokenValue'};
 
