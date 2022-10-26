@@ -33,6 +33,8 @@ class NetworkServiceImpl extends NetworkService {
   }) async {
     final url = Uri.parse('$spotifyUrl$searchEndpoint${searchParamsQuery(search, limit)}');
 
+    // TODO: create separate method for requests
+
     final response = await get(url, headers: authHeadersMap);
     final Map responseMapList = json.decode(response.body);
     final result = <TrackModel>[];
