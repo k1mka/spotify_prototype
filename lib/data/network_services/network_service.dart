@@ -6,7 +6,7 @@ import 'package:spotify_prototype/data/network_services/mocked_network_service.d
 
 class NetworkServiceImpl extends NetworkService {
   static const tokenValue =
-      'BQCoJyeyUjc3_1-NXwPVuPS5TTHKQdYXxkywnr3mqLeRH54uljd8s-Ao12amVYIQet20cPmiHmJzDcYu6kwaaZ7s84luUrf-XIbe_DIAI59WNrd0KM-dMNS_OoYTY5GsJQeX_En4NkWtiWq50brKYtF7IpvMcsQN4YFBoewVgJ9QYghlRYksEKy1VssAznu406c0pTI';
+      'BQD_xNQ01yUpD-pWMX-XKyLZXJUsY2AekMlAdrCZ2S7soS8piQi2_sk3E247DnNVybaDzCv8L40dwbgKlnGgpRpQMte49WMqphFVAa5QGJc1wVeNcc85RcxkqhBX70Lmj_AdCGTzp8CZ-vK46LunEmxuTEq1tJGNIOhhgJG3Yl0Ny0dU2oeBB8iTJLV0v5jncN0nNvk';
   static const authorizationKey = 'Authorization';
   static const authHeadersMap = {authorizationKey: 'Bearer $tokenValue'};
 
