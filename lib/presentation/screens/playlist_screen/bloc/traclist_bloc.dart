@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_prototype/data/repository/repository.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_events.dart';

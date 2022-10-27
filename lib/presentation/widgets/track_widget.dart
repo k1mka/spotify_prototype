@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotify_prototype/data/models/track_model.dart';
 
 class TrackWidget extends StatefulWidget {
@@ -22,7 +21,7 @@ class _TrackWidgetState extends State<TrackWidget> {
             title: Text(widget.trackModel.artistsNamesFormatted),
             subtitle: Text(widget.trackModel.songName),
             trailing: IconButton(
-              icon: Icon(Icons.favorite_border),
+              icon: const Icon(Icons.favorite_border),
               onPressed: () {},
             ),
             selected: true,
