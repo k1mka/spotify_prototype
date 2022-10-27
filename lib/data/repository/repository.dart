@@ -5,4 +5,6 @@ abstract class Repository {
     required String search,
     required int limit,
   });
+
+  Future<List<TrackModel>> fetchFavourite();
 }
