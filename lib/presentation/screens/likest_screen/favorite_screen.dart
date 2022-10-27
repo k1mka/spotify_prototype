@@ -5,8 +5,8 @@ import 'package:spotify_prototype/get_it.dart';
 import 'package:spotify_prototype/presentation/screens/likest_screen/bloc/favourite_bloc.dart';
 import 'package:spotify_prototype/presentation/screens/likest_screen/favorite_layout.dart';
 
-class LikestScreen extends StatelessWidget {
-  const LikestScreen({Key? key}) : super(key: key);
+class FavouriteScreen extends StatelessWidget {
+  const FavouriteScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
