@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_bloc.dart';
 import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_events.dart';
-import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/traclist_bloc.dart';
 
 class SearchWidget extends StatefulWidget {
   const SearchWidget({Key? key}) : super(key: key);

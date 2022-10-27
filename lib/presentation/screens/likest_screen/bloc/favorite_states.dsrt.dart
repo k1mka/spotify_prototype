@@ -4,14 +4,14 @@ abstract class LikestStates {}
 
 class InitialState extends LikestStates {}
 
-class LoadingLike extends LikestStates {}
+class LoadingFavorite extends LikestStates {}
 
-class LoadedLike extends LikestStates {
-  LoadedLike(this.favoriteList);
+class LoadedFavorite extends LikestStates {
+  LoadedFavorite(this.favoriteList);
   final List<TrackModel> favoriteList;
 }
 
-class ErrorLike extends LikestStates {
-  ErrorLike(this.exception);
+class ErrorFavorite extends LikestStates {
+  ErrorFavorite(this.exception);
   final Object exception;
 }

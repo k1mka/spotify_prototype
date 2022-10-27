@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LikestLayout extends StatelessWidget {
-  const LikestLayout({Key? key}) : super(key: key);
+class FavoriteLayout extends StatelessWidget {
+  const FavoriteLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
