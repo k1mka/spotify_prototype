@@ -41,27 +41,3 @@ List<PersistentBottomNavBarItem> navBarItems() {
         title: 'FavouriteList')
   ];
 }
-
-class CustomTabBar extends StatelessWidget {
-  const CustomTabBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: [
-        BottomNavigationBarItem(
-          icon: IconButton(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PlayListScreen())),
-              icon: const Icon(Icons.play_arrow)),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: IconButton(
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => FavouriteScreen())),
-              icon: const Icon(Icons.favorite)),
-          label: 'Business',
-        ),
-      ],
-    );
-  }
-}
