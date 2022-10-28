@@ -1,3 +1,3 @@
 abstract class FavoriteEvents {}
 
-class LoadedFavoriteList extends FavoriteEvents {}
+class LoadedFavoriteEvent extends FavoriteEvents {}
