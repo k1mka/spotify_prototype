@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:spotify_prototype/presentation/screens/likest_screen/favorite_screen.dart';
 
 import 'presentation/screens/playlist_screen/playlist_screen.dart';
 
@@ -7,8 +9,59 @@ class SpotifyPrototypeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: PlayListScreen(),
+    return MaterialApp(
+      home: Column(children: [
+        Expanded(
+          child: PersistentTabView(
+            context,
+            screens: screens(),
+            items: navBarItems(),
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
+List<Widget> screens() => [const PlayListScreen(), const FavouriteScreen()];
+
+List<PersistentBottomNavBarItem> navBarItems() {
+  return [
+    PersistentBottomNavBarItem(
+        icon: const Icon(
+          Icons.play_arrow,
+          color: Colors.green,
+        ),
+        title: 'Playlist'),
+    PersistentBottomNavBarItem(
+        icon: const Icon(
+          Icons.favorite,
+          color: Colors.green,
+        ),
+        title: 'FavouriteList')
+  ];
+}
+
+class CustomTabBar extends StatelessWidget {
+  const CustomTabBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(
+          icon: IconButton(
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PlayListScreen())),
+              icon: const Icon(Icons.play_arrow)),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: IconButton(
+              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => FavouriteScreen())),
+              icon: const Icon(Icons.favorite)),
+          label: 'Business',
+        ),
+      ],
     );
   }
 }
