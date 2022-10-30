@@ -1,6 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:spotify_prototype/data/models/track_model.dart';
-import 'package:spotify_prototype/data/storage_services/track_storage_servise.dart';
+import 'package:spotify_prototype/data/storage_services/track_storage_service.dart';
 
 class TrackStorageServiceImpl extends TrackStorageService {
   TrackStorageServiceImpl() {
