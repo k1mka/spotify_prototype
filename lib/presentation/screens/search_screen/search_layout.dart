@@ -28,32 +28,26 @@ class _SearchLayoutState extends State<SearchLayout> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            BlocBuilder<SearchBloc, SearchState>(
-              builder: (context, state) {
-                if (state is InitialSearchState) {
-                  return const Center(
-                    child: Text(
-                      'Pleas, enter an artist in the input field',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                  );
-                }
-                if (state is ErrorSearchState) return const Text('Error loading');
-                if (state is SearchingState) return const Center(child: CircularProgressIndicator());
-                if (state is LoadedSearchedTracksState) {
-                  return Expanded(
-                    child: ListView.builder(
-                      itemCount: state.playList.length,
-                      itemBuilder: (_, index) => TrackWidget(trackModel: state.playList[index]),
-                    ),
-                  );
-                }
-                throw Exception('Not processed state in PlayListLayout');
-              },
-            ),
-          ],
+        child: BlocBuilder<SearchBloc, SearchState>(
+          builder: (context, state) {
+            if (state is InitialSearchState) {
+              return const Center(
+                child: Text(
+                  'Pleas, enter an artist in the input field',
+                  style: TextStyle(color: Colors.green),
+                ),
+              );
+            }
+            if (state is ErrorSearchState) return const Text('Error loading');
+            if (state is SearchingState) return const Center(child: CircularProgressIndicator());
+            if (state is LoadedSearchedTracksState) {
+              return ListView.builder(
+                itemCount: state.playList.length,
+                itemBuilder: (_, index) => TrackWidget(trackModel: state.playList[index]),
+              );
+            }
+            throw Exception('Not processed state in PlayListLayout');
+          },
         ),
       ),
     );
