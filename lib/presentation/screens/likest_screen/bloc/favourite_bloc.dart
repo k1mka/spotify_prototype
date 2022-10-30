@@ -3,7 +3,7 @@ import 'package:spotify_prototype/data/repository/repository.dart';
 import 'package:spotify_prototype/presentation/screens/likest_screen/bloc/favorite_events.dart';
 import 'package:spotify_prototype/presentation/screens/likest_screen/bloc/favorite_states.dsrt.dart';
 
-class FavoriteBloc extends Bloc<LikeTrackEvent, FavouriteStates> {
+class FavoriteBloc extends Bloc<FavoriteEvents, FavouriteStates> {
   Repository repo;
   FavoriteBloc(this.repo) : super(InitialState()) {
     on<LikeTrackEvent>((event, emit) async {
