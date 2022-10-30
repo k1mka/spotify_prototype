@@ -11,6 +11,7 @@ class TrackWidget extends StatefulWidget {
 }
 
 class _TrackWidgetState extends State<TrackWidget> {
+  var isLiked = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,10 +20,17 @@ class _TrackWidgetState extends State<TrackWidget> {
           padding: const EdgeInsets.all(12),
           child: ListTile(
             title: Text(widget.trackModel.artistsNamesFormatted),
-            subtitle: Text(widget.trackModel.songName),
+            subtitle: Text(widget.trackModel.songName.toString()),
             trailing: IconButton(
-              icon: const Icon(Icons.favorite_border),
-              onPressed: () {},
+              icon: Icon(
+                Icons.favorite,
+                color: isLiked ? Colors.grey : Colors.red,
+              ),
+              onPressed: () {
+                setState(() {
+                  isLiked = !isLiked;
+                });
+              },
             ),
             selected: true,
           ),
