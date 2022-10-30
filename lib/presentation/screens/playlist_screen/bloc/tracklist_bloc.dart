@@ -9,9 +9,9 @@ class PlayListBloc extends Bloc<TrackEvent, PlayListState> {
 
   PlayListBloc(this.repository) : super(InitialState()) {
     on<SearchTrackEvent>((event, emit) async {
-      emit(LoadingTrack());
-      final List<TrackModel> tracks = await repository.fetchTrack(search: event.search, limit: event.limit);
       try {
+        emit(LoadingTrack());
+        final List<TrackModel> tracks = await repository.fetchTrack(search: event.search, limit: event.limit);
         emit(LoadedTrack(tracks));
       } catch (e) {
         emit(ErrorTrack(e));
