@@ -45,8 +45,8 @@ class _PlaylistLayoutState extends State<PlaylistLayout> {
                 if (state is LoadedTrack) {
                   return Expanded(
                     child: ListView.builder(
-                      itemBuilder: (_, index) => TrackWidget(trackModel: state.playList[index]),
                       itemCount: state.playList.length,
+                      itemBuilder: (_, index) => TrackWidget(trackModel: state.playList[index]),
                     ),
                   );
                 }

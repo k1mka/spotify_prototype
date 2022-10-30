@@ -12,7 +12,7 @@ class StorageMockedImpl extends StorageMockedService {
   Future<List<TrackModel>> fetchModel() async => [
         for (var i = 0; i < numberOfMockedData; i++)
           TrackModel(
-            songName: songName,
+            songName: [songName],
             artistNames: [artistName],
           ),
       ];

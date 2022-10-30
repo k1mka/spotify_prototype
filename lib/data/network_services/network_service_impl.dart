@@ -50,7 +50,7 @@ class NetworkServiceImpl extends NetworkService {
       }
 
       result.add(
-        TrackModel(artistNames: artistNames, songName: songName),
+        TrackModel(artistNames: artistNames, songName: [songName]),
       );
     }
     return result;

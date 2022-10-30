@@ -17,7 +17,7 @@ class MockedServiceImpl extends NetworkService {
         for (var i = 0; i < numberOfMockedData; i++)
           TrackModel(
             artistNames: [songName],
-            songName: artistName,
+            songName: [artistName],
           ),
       ];
 }
