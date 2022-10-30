@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_states.dart';
-import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_bloc.dart';
+import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_bloc.dart';
+import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_states.dart';
 import 'package:spotify_prototype/presentation/widgets/search_widget.dart';
 import 'package:spotify_prototype/presentation/widgets/track_widget.dart';
 
-class PlaylistLayout extends StatefulWidget {
-  const PlaylistLayout({Key? key}) : super(key: key);
+class SearchLayout extends StatefulWidget {
+  const SearchLayout({Key? key}) : super(key: key);
 
   @override
-  State<PlaylistLayout> createState() => _PlaylistLayoutState();
+  State<SearchLayout> createState() => _SearchLayoutState();
 }
 
-class _PlaylistLayoutState extends State<PlaylistLayout> {
+class _SearchLayoutState extends State<SearchLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,9 +30,9 @@ class _PlaylistLayoutState extends State<PlaylistLayout> {
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
-            BlocBuilder<PlayListBloc, PlayListState>(
+            BlocBuilder<SearchBloc, SearchState>(
               builder: (context, state) {
-                if (state is InitialState) {
+                if (state is InitialSearchState) {
                   return const Center(
                     child: Text(
                       'Pleas, enter an artist in the input field',
@@ -40,9 +40,9 @@ class _PlaylistLayoutState extends State<PlaylistLayout> {
                     ),
                   );
                 }
-                if (state is ErrorTrack) return const Text('Error loading');
-                if (state is LoadingTrack) return const Center(child: CircularProgressIndicator());
-                if (state is LoadedTrack) {
+                if (state is ErrorSearchState) return const Text('Error loading');
+                if (state is SearchingState) return const Center(child: CircularProgressIndicator());
+                if (state is LoadedSearchedTracksState) {
                   return Expanded(
                     child: ListView.builder(
                       itemCount: state.playList.length,

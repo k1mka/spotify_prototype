@@ -1,6 +1,6 @@
-abstract class TrackEvent {}
+abstract class SearchEvent {}
 
-class SearchTrackEvent extends TrackEvent {
+class SearchTrackEvent extends SearchEvent {
   final String search;
   final int limit;
 

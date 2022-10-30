@@ -1,20 +1,20 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_prototype/data/models/track_model.dart';
 import 'package:spotify_prototype/data/repository/repository.dart';
-import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_events.dart';
-import 'package:spotify_prototype/presentation/screens/playlist_screen/bloc/tracklist_states.dart';
+import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_events.dart';
+import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_states.dart';
 
-class PlayListBloc extends Bloc<TrackEvent, PlayListState> {
+class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final Repository repository;
 
-  PlayListBloc(this.repository) : super(InitialState()) {
+  SearchBloc(this.repository) : super(InitialSearchState()) {
     on<SearchTrackEvent>((event, emit) async {
       try {
-        emit(LoadingTrack());
+        emit(SearchingState());
         final List<TrackModel> tracks = await repository.fetchTrack(search: event.search, limit: event.limit);
-        emit(LoadedTrack(tracks));
+        emit(LoadedSearchedTracksState(tracks));
       } catch (e) {
-        emit(ErrorTrack(e));
+        emit(ErrorSearchState(e));
       }
     });
   }
