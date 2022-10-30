@@ -7,4 +7,8 @@ abstract class Repository {
   });
 
   Future<List<TrackModel>> fetchFavourite();
+
+  Future<void> saveTrack(TrackModel trackModel);
+
+  Future<List<TrackModel>> getSavedTracks();
 }
