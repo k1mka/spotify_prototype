@@ -7,21 +7,22 @@ class TrackStorageServiceImpl extends TrackStorageService {
     Hive.registerAdapter(TrackModelAdapter());
   }
 
-  static const _catBoxKey = 'trackBox';
-  static const _catFactKey = 'myTracks';
+  static const _trackBoxKey = 'trackBox';
+  static const _favoriteTracksKey = 'favoriteTracks';
 
   @override
   Future<List<TrackModel>> getSavedTracks() async {
-    final box = await Hive.openBox(_catBoxKey);
-    final tracks = List<TrackModel>.from(box.get(_catFactKey));
+    final box = await Hive.openBox<List?>(_trackBoxKey);
+    final data = box.get(_favoriteTracksKey) ?? [];
+    final tracks = List<TrackModel>.from(data);
     return tracks;
   }
 
   @override
   Future<void> saveTrack(TrackModel trackModel) async {
-    final box = await Hive.openBox(_catBoxKey);
-    final list = box.get(_catFactKey) ?? [];
+    final box = await Hive.openBox<List?>(_trackBoxKey);
+    final list = box.get(_favoriteTracksKey) ?? [];
     list.add(trackModel);
-    await box.put(_catFactKey, list);
+    await box.put(_favoriteTracksKey, list);
   }
 }
