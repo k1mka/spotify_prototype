@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:spotify_prototype/presentation/screens/likest_screen/favorite_screen.dart';
+import 'package:spotify_prototype/presentation/screens/favorite_screen/favorite_screen.dart';
 import 'package:spotify_prototype/presentation/screens/search_screen/search_screen.dart';
 
 class SpotifyPrototypeApp extends StatelessWidget {

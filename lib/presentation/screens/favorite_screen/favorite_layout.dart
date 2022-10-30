@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spotify_prototype/presentation/screens/likest_screen/bloc/favorite_states.dsrt.dart';
-import 'package:spotify_prototype/presentation/screens/likest_screen/bloc/favourite_bloc.dart';
+import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favorite_states.dart';
+import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favourite_bloc.dart';
 import 'package:spotify_prototype/presentation/widgets/track_widget.dart';
 
 import 'bloc/favorite_events.dart';
@@ -29,7 +29,7 @@ class _FavoriteLayoutState extends State<FavoriteLayout> {
       ),
       body: Column(
         children: [
-          BlocBuilder<FavoriteBloc, FavouriteState>(
+          BlocBuilder<FavoriteBloc, FavoriteState>(
             builder: (BuildContext context, state) {
               if (state is InitialFavoriteState) return const Text('EXPECTATION');
               if (state is LoadingFavoriteState) return const CircularProgressIndicator();
