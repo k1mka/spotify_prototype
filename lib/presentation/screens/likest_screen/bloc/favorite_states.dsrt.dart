@@ -1,17 +1,17 @@
 import 'package:spotify_prototype/data/models/track_model.dart';
 
-abstract class FavouriteStates {}
+abstract class FavouriteState {}
 
-class InitialState extends FavouriteStates {}
+class InitialFavoriteState extends FavouriteState {}
 
-class LoadingFavorite extends FavouriteStates {}
+class LoadingFavoriteState extends FavouriteState {}
 
-class LoadedFavorite extends FavouriteStates {
-  LoadedFavorite(this.favoriteList);
+class LoadedFavoriteState extends FavouriteState {
+  LoadedFavoriteState(this.favoriteList);
   final List<TrackModel> favoriteList;
 }
 
-class ErrorFavorite extends FavouriteStates {
-  ErrorFavorite(this.exception);
+class ErrorFavoriteState extends FavouriteState {
+  ErrorFavoriteState(this.exception);
   final Object exception;
 }

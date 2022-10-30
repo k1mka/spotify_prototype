@@ -3,16 +3,16 @@ import 'package:spotify_prototype/data/repository/repository.dart';
 import 'package:spotify_prototype/presentation/screens/likest_screen/bloc/favorite_events.dart';
 import 'package:spotify_prototype/presentation/screens/likest_screen/bloc/favorite_states.dsrt.dart';
 
-class FavoriteBloc extends Bloc<FavoriteEvents, FavouriteStates> {
+class FavoriteBloc extends Bloc<FavoriteEvent, FavouriteState> {
   Repository repo;
-  FavoriteBloc(this.repo) : super(InitialState()) {
+  FavoriteBloc(this.repo) : super(InitialFavoriteState()) {
     on<LikeTrackEvent>((event, emit) async {
-      emit(LoadingFavorite());
+      emit(LoadingFavoriteState());
       try {
         final tracks = await repo.getSavedTracks();
-        emit(LoadedFavorite(tracks));
+        emit(LoadedFavoriteState(tracks));
       } catch (e) {
-        emit(ErrorFavorite(e));
+        emit(ErrorFavoriteState(e));
       }
     });
   }

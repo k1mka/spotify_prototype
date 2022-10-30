@@ -16,7 +16,7 @@ class FavoriteLayout extends StatefulWidget {
 class _FavoriteLayoutState extends State<FavoriteLayout> {
   @override
   void initState() {
-    context.read<FavoriteBloc>().add(LoadedFavoriteEvent());
+    context.read<FavoriteBloc>().add(LoadFavoriteEvent());
     super.initState();
   }
 
@@ -29,12 +29,12 @@ class _FavoriteLayoutState extends State<FavoriteLayout> {
       ),
       body: Column(
         children: [
-          BlocBuilder<FavoriteBloc, FavouriteStates>(
+          BlocBuilder<FavoriteBloc, FavouriteState>(
             builder: (BuildContext context, state) {
-              if (state is InitialState) return const Text('EXPECTATION');
-              if (state is LoadingFavorite) return const CircularProgressIndicator();
-              if (state is ErrorFavorite) return const Text('unhandled exception in FavoriteLayout');
-              if (state is LoadedFavorite) {
+              if (state is InitialFavoriteState) return const Text('EXPECTATION');
+              if (state is LoadingFavoriteState) return const CircularProgressIndicator();
+              if (state is ErrorFavoriteState) return const Text('unhandled exception in FavoriteLayout');
+              if (state is LoadedFavoriteState) {
                 return Expanded(
                   child: ListView.builder(
                     shrinkWrap: true,

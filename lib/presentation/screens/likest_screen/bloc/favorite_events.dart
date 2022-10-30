@@ -1,10 +1,10 @@
 import 'package:spotify_prototype/data/models/track_model.dart';
 
-abstract class FavoriteEvents {}
+abstract class FavoriteEvent {}
 
-class LoadedFavoriteEvent extends FavoriteEvents {}
+class LoadFavoriteEvent extends FavoriteEvent {}
 
-class LikeTrackEvent extends FavoriteEvents {
+class LikeTrackEvent extends FavoriteEvent {
   final TrackModel trackModel;
 
   LikeTrackEvent(this.trackModel);
