@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spotify_prototype/data/models/track_model.dart';
 
 abstract class TrackStorageService {

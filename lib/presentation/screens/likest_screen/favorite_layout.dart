@@ -16,7 +16,6 @@ class FavoriteLayout extends StatefulWidget {
 class _FavoriteLayoutState extends State<FavoriteLayout> {
   @override
   void initState() {
-    // TODO: CHANGE TO BlocProvider.of<FavoriteBloc>(context).add(LoadedFavoriteEvent());
     context.read<FavoriteBloc>().add(LoadedFavoriteEvent());
     super.initState();
   }
