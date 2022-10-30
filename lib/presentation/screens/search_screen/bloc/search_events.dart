@@ -1,3 +1,5 @@
+import 'package:spotify_prototype/data/models/track_model.dart';
+
 abstract class SearchEvent {}
 
 class SearchTrackEvent extends SearchEvent {
@@ -5,4 +7,10 @@ class SearchTrackEvent extends SearchEvent {
   final int limit;
 
   SearchTrackEvent(this.search, this.limit);
+}
+
+class LikeTrackEvent extends SearchEvent {
+  final TrackModel trackModel;
+
+  LikeTrackEvent(this.trackModel);
 }
