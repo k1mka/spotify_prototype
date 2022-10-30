@@ -6,8 +6,6 @@ abstract class Repository {
     required int limit,
   });
 
-  Future<List<TrackModel>> fetchFavourite();
-
   Future<void> saveTrack(TrackModel trackModel);
 
   Future<List<TrackModel>> getSavedTracks();

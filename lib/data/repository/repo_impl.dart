@@ -1,14 +1,12 @@
 import 'package:spotify_prototype/data/models/track_model.dart';
 import 'package:spotify_prototype/data/network_services/network_service.dart';
-import 'package:spotify_prototype/data/network_services/storage_mocked_service.dart';
-import 'package:spotify_prototype/data/network_services/track_storage_servise.dart';
+import 'package:spotify_prototype/data/storage_services/track_storage_servise.dart';
 import 'package:spotify_prototype/data/repository/repository.dart';
 
 class RepoImpl extends Repository {
-  RepoImpl({required this.networkService, required this.storageMockedService, required this.trackStorageService});
+  RepoImpl({required this.networkService, required this.trackStorageService});
 
   final NetworkService networkService;
-  final StorageMockedService storageMockedService;
   final TrackStorageService trackStorageService;
 
   @override
@@ -19,11 +17,8 @@ class RepoImpl extends Repository {
       networkService.fetchModel(search: search, limit: limit);
 
   @override
-  Future<List<TrackModel>> fetchFavourite() => storageMockedService.fetchModel();
+  Future<List<TrackModel>> getSavedTracks() => trackStorageService.getSavedTracks();
 
   @override
-  Future<List<TrackModel>> getSavedTracks() async => await trackStorageService.getSavedTracks();
-
-  @override
-  Future<void> saveTrack(TrackModel trackModel) async => await trackStorageService.saveTrack(trackModel);
+  Future<void> saveTrack(TrackModel trackModel) => trackStorageService.saveTrack(trackModel);
 }
