@@ -8,5 +8,7 @@ abstract class Repository {
 
   Future<void> saveTrack(TrackModel trackModel);
 
+  Future<void> deleteTrack(TrackModel trackModel);
+
   Future<List<TrackModel>> getSavedTracks();
 }

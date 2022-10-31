@@ -25,4 +25,12 @@ class TrackStorageServiceImpl extends TrackStorageService {
     list.add(trackModel);
     await box.put(_favoriteTracksKey, list);
   }
+
+  @override
+  Future<void> deleteTrack(TrackModel trackModel) async {
+    final box = await Hive.openBox<List?>(_trackBoxKey);
+    final list = box.get(_favoriteTracksKey) ?? [];
+    list.remove(trackModel);
+    await box.put(_favoriteTracksKey, list);
+  }
 }

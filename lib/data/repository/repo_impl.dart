@@ -21,4 +21,7 @@ class RepoImpl extends Repository {
 
   @override
   Future<void> saveTrack(TrackModel trackModel) => trackStorageService.saveTrack(trackModel);
+
+  @override
+  Future<void> deleteTrack(TrackModel trackModel) => trackStorageService.deleteTrack(trackModel);
 }
