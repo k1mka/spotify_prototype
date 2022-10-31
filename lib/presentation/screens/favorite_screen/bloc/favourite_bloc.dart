@@ -6,14 +6,19 @@ import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favo
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   Repository repo;
   FavoriteBloc(this.repo) : super(InitialFavoriteState()) {
-    on<LikeTrackEvent>((event, emit) async {
-      emit(LoadingFavoriteState());
-      try {
-        final tracks = await repo.getSavedTracks();
-        emit(LoadedFavoriteState(tracks));
-      } catch (e) {
-        emit(ErrorFavoriteState(e));
-      }
-    });
+    // todo: implement deletion of track from favorite list
+    on<LoadFavoriteEvent>(
+      (event, emit) async {
+        try {
+          emit(LoadingFavoriteState());
+
+          final track = await repo.getSavedTracks();
+          emit(LoadedFavoriteState(track));
+        } catch (e) {
+          emit(ErrorFavoriteState(e));
+          rethrow;
+        }
+      },
+    );
   }
 }
