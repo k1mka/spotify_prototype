@@ -45,21 +45,17 @@ class _FavoriteLayoutState extends State<FavoriteLayout> {
           if (state is ErrorFavoriteState) return Text('unhandled exception in FavoriteLayout ${state.exception}');
           if (state is LoadedFavoriteState) {
             if (state.favoriteList.isEmpty) return const Center(child: Text('No favorite track'));
-            return state.favoriteList.isEmpty
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : RefreshWidget(
-                    onRefresh: () {
-                      return loadList();
-                    },
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      itemCount: state.favoriteList.length,
-                      itemBuilder: (_, index) => TrackWidget(trackModel: state.favoriteList[index]),
-                    ),
-                  );
+            return RefreshWidget(
+              onRefresh: () {
+                return loadList();
+              },
+              child: ListView.builder(
+                shrinkWrap: true,
+                primary: false,
+                itemCount: state.favoriteList.length,
+                itemBuilder: (_, index) => TrackWidget(trackModel: state.favoriteList[index]),
+              ),
+            );
           }
           throw Exception('unprocessed state $state in FavouriteLayout');
         },
