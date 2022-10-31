@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favorite_states.dart';
 import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favourite_bloc.dart';
+import 'package:spotify_prototype/presentation/widgets/liked_track_widget.dart';
 import 'package:spotify_prototype/presentation/widgets/refresh_widget.dart';
-import 'package:spotify_prototype/presentation/widgets/track_widget.dart';
 
 import 'bloc/favorite_events.dart';
 
@@ -53,7 +53,17 @@ class _FavoriteLayoutState extends State<FavoriteLayout> {
                 shrinkWrap: true,
                 primary: false,
                 itemCount: state.favoriteList.length,
-                itemBuilder: (_, index) => TrackWidget(trackModel: state.favoriteList[index]),
+                itemBuilder: (_, index) => LikedTrackWidget(
+                  trackModel: state.favoriteList[index],
+                  onPressed: () {
+                    setState(
+                      () {
+                        // state.favoriteList.remove(state.favoriteList[index]);
+                        context.read<FavoriteBloc>().add(DeleteFavoriteEvent(state.favoriteList[index]));
+                      },
+                    );
+                  },
+                ),
               ),
             );
           }

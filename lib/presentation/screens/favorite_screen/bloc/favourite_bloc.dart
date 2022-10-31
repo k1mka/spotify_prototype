@@ -4,7 +4,8 @@ import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favo
 import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favorite_states.dart';
 
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
-  Repository repo;
+  final Repository repo;
+
   FavoriteBloc(this.repo) : super(InitialFavoriteState()) {
     // todo: implement deletion of track from favorite list
     on<LoadFavoriteEvent>(
@@ -16,9 +17,19 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
           emit(LoadedFavoriteState(track));
         } catch (e) {
           emit(ErrorFavoriteState(e));
-          rethrow;
         }
       },
     );
+    on<DeleteFavoriteEvent>((event, emit) async {
+      try {
+        emit(LoadingFavoriteState());
+        await repo.deleteTrack(event.model);
+        final track = await repo.getSavedTracks();
+        emit(LoadedFavoriteState(track));
+      } catch (e) {
+        emit(ErrorFavoriteState(e));
+        rethrow;
+      }
+    });
   }
 }
