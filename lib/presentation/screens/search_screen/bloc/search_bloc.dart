@@ -17,5 +17,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(ErrorSearchState(e));
       }
     });
+    on<LikeTrackEvent>((event, emit) async {
+      try {
+        await repository.saveTrack(event.trackModel);
+      } catch (e) {
+        emit(ErrorSearchState(e));
+      }
+    });
   }
 }
