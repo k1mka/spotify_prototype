@@ -32,5 +32,6 @@ class TrackStorageServiceImpl extends TrackStorageService {
     final list = box.get(_favoriteTracksKey) ?? [];
     list.remove(trackModel);
     await box.put(_favoriteTracksKey, list);
+    // todo: return result of operation deleting
   }
 }
