@@ -5,6 +5,8 @@ import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search
 import 'package:spotify_prototype/presentation/widgets/search_widget.dart';
 import 'package:spotify_prototype/presentation/widgets/track_widget.dart';
 
+import 'bloc/search_events.dart';
+
 class SearchLayout extends StatefulWidget {
   const SearchLayout({Key? key}) : super(key: key);
 
@@ -12,7 +14,11 @@ class SearchLayout extends StatefulWidget {
   State<SearchLayout> createState() => _SearchLayoutState();
 }
 
+//todo: обновлять состояние экрана по табке лайк
+//todo: удалять трек из хранилища по нажатию на лайк
+
 class _SearchLayoutState extends State<SearchLayout> {
+  var isLiked = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +49,9 @@ class _SearchLayoutState extends State<SearchLayout> {
             if (state is LoadedSearchedTracksState) {
               return ListView.builder(
                 itemCount: state.playList.length,
-                itemBuilder: (_, index) => TrackWidget(trackModel: state.playList[index]),
+                itemBuilder: (_, index) => TrackWidget(
+                  trackModel: state.playList[index],
+                ),
               );
             }
             throw Exception('Not processed state in PlayListLayout');

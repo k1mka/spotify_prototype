@@ -12,7 +12,6 @@ class LikedTrackWidget extends StatefulWidget {
 }
 
 class _LikedTrackWidgetState extends State<LikedTrackWidget> {
-  var isDeleted = true;
   @override
   Widget build(BuildContext context) {
     return Column(
