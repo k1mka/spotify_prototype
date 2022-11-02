@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_bloc.dart';
@@ -11,18 +13,25 @@ class SearchWidget extends StatefulWidget {
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
+  Timer? _debounce;
   final controller = TextEditingController();
-
-  // TODO: Add debouncing
 
   @override
   void initState() {
     controller.addListener(() {
       if (controller.text.isNotEmpty) {
-        context.read<SearchBloc>().add(SearchTrackEvent(controller.text, 20));
+        _debounce = Timer(const Duration(milliseconds: 500), () {
+          context.read<SearchBloc>().add(SearchTrackEvent(controller.text, 20));
+        });
       }
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    super.dispose();
   }
 
   @override
