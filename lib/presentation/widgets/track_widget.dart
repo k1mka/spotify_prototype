@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_prototype/data/models/track_model.dart';
-import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_bloc.dart';
-import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_events.dart';
 
 class TrackWidget extends StatefulWidget {
-  const TrackWidget({Key? key, required this.trackModel}) : super(key: key);
+  const TrackWidget({Key? key, required this.trackModel, required this.onPressed}) : super(key: key);
   final TrackModel trackModel;
+  final void Function(bool isLiked) onPressed;
 
   @override
   State<TrackWidget> createState() => _TrackWidgetState();
@@ -31,7 +29,7 @@ class _TrackWidgetState extends State<TrackWidget> {
               onPressed: () {
                 setState(() {
                   isLiked = !isLiked;
-                  context.read<SearchBloc>().add(LikeTrackEvent(widget.trackModel));
+                  widget.onPressed(isLiked);
                 });
               },
             ),
