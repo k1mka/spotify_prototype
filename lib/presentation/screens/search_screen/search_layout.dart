@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_bloc.dart';
 import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_states.dart';
 import 'package:spotify_prototype/presentation/widgets/search_widget.dart';

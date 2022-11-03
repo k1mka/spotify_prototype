@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify_prototype/data/models/track_model.dart';
-import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favourite_bloc.dart';
 import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_bloc.dart';
 import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_events.dart';
 import 'package:spotify_prototype/presentation/widgets/track_widget.dart';
