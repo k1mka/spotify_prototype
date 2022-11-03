@@ -24,5 +24,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(ErrorSearchState(e));
       }
     });
+    on<DeleteFavoriteEvent>((event, emit) async {
+      try {
+        emit((SearchingState()));
+        await repository.deleteTrack(event.model);
+        final track = await repository.getSavedTracks();
+        emit(LoadedSearchedTracksState(track));
+      } catch (e) {
+        emit(ErrorSearchState(e));
+        rethrow;
+      }
+    });
   }
 }

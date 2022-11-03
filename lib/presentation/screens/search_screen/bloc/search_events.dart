@@ -14,3 +14,8 @@ class LikeTrackEvent extends SearchEvent {
 
   LikeTrackEvent(this.trackModel);
 }
+
+class DeleteFavoriteEvent extends SearchEvent {
+  DeleteFavoriteEvent(this.model);
+  final TrackModel model;
+}
