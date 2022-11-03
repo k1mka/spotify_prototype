@@ -14,9 +14,6 @@ class SearchLayout extends StatefulWidget {
   State<SearchLayout> createState() => _SearchLayoutState();
 }
 
-//todo: обновлять состояние экрана по табке лайк
-//todo: удалять трек из хранилища по нажатию на лайк
-
 class _SearchLayoutState extends State<SearchLayout> {
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,6 @@ import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favo
 import 'package:spotify_prototype/presentation/screens/favorite_screen/bloc/favourite_bloc.dart';
 import 'package:spotify_prototype/presentation/widgets/liked_track_widget.dart';
 import 'package:spotify_prototype/presentation/widgets/refresh_widget.dart';
-
 import 'bloc/favorite_events.dart';
 
 class FavoriteLayout extends StatefulWidget {
@@ -27,8 +26,6 @@ class _FavoriteLayoutState extends State<FavoriteLayout> {
       return context.read<FavoriteBloc>().add(LoadFavoriteEvent());
     });
   }
-
-  // todo: implements pull to refresh
 
   @override
   Widget build(BuildContext context) {
@@ -54,16 +51,8 @@ class _FavoriteLayoutState extends State<FavoriteLayout> {
                 primary: false,
                 itemCount: state.favoriteList.length,
                 itemBuilder: (_, index) => LikedTrackWidget(
-                  trackModel: state.favoriteList[index],
-                  onPressed: () {
-                    setState(
-                      () {
-                        // state.favoriteList.remove(state.favoriteList[index]);
-                        context.read<FavoriteBloc>().add(DeleteFavoriteEvent(state.favoriteList[index]));
-                      },
-                    );
-                  },
-                ),
+                    trackModel: state.favoriteList[index],
+                    onPressed: () => context.read<FavoriteBloc>().add(DeleteFavoriteEvent(state.favoriteList[index]))),
               ),
             );
           }
