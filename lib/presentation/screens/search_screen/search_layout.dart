@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_bloc.dart';
 import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_states.dart';
 import 'package:spotify_prototype/presentation/widgets/search_widget.dart';
@@ -18,7 +19,6 @@ class SearchLayout extends StatefulWidget {
 //todo: удалять трек из хранилища по нажатию на лайк
 
 class _SearchLayoutState extends State<SearchLayout> {
-  var isLiked = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,8 +50,10 @@ class _SearchLayoutState extends State<SearchLayout> {
               return ListView.builder(
                 itemCount: state.playList.length,
                 itemBuilder: (_, index) => TrackWidget(
-                  trackModel: state.playList[index],
-                ),
+                    trackModel: state.playList[index],
+                    onPressed: (isLiked) => isLiked
+                        ? context.read<SearchBloc>().add(DeleteFavoriteEvent(state.playList[index]))
+                        : context.read<SearchBloc>().add(LikeTrackEvent(state.playList[index]))),
               );
             }
             throw Exception('Not processed state in PlayListLayout');
