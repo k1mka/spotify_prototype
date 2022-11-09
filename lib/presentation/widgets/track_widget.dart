@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:spotify_prototype/data/models/track_model.dart';
 
 class TrackWidget extends StatefulWidget {
-  const TrackWidget({Key? key, required this.trackModel}) : super(key: key);
-
+  const TrackWidget({Key? key, required this.trackModel, required this.onPressed}) : super(key: key);
   final TrackModel trackModel;
+  final void Function(bool isLiked) onPressed;
 
   @override
   State<TrackWidget> createState() => _TrackWidgetState();
 }
 
 class _TrackWidgetState extends State<TrackWidget> {
+  var isLiked = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,10 +20,18 @@ class _TrackWidgetState extends State<TrackWidget> {
           padding: const EdgeInsets.all(12),
           child: ListTile(
             title: Text(widget.trackModel.artistsNamesFormatted),
-            subtitle: Text(widget.trackModel.songName),
+            subtitle: Text(widget.trackModel.songName.toString()),
             trailing: IconButton(
-              icon: const Icon(Icons.favorite_border),
-              onPressed: () {},
+              icon: Icon(
+                Icons.favorite,
+                color: isLiked ? Colors.grey : Colors.red,
+              ),
+              onPressed: () {
+                setState(() {
+                  isLiked = !isLiked;
+                  widget.onPressed(isLiked);
+                });
+              },
             ),
             selected: true,
           ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "380157849971",
+    "project_id": "dog-list-9e9d2",
+    "storage_bucket": "dog-list-9e9d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380157849971:android:9da21dde7f4416b2a95506",
+        "android_client_info": {
+          "package_name": "com.example.spotify_prototype"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380157849971-sjrdqbk06rpr9s970vh9b7p2d5tq5jog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLftrNrfs-66tvHXJQQxISXhZ1axvUsWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380157849971-sjrdqbk06rpr9s970vh9b7p2d5tq5jog.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
