@@ -40,7 +40,7 @@ class NetworkServiceImpl extends NetworkService {
     final result = <TrackModel>[];
     final items = responseMapList[_trackKey][_itemsKey];
     for (final item in items) {
-      final String songName = item[_nameKey];
+      final List songName = item[_nameKey];
       final List artistsRawData = item[_artistsKey];
       final artistNames = <String>[];
 
@@ -50,7 +50,7 @@ class NetworkServiceImpl extends NetworkService {
       }
 
       result.add(
-        TrackModel(artistNames: artistNames, songName: [songName]),
+        TrackModel(artistNames: artistNames, songName: songName),
       );
     }
     return result;

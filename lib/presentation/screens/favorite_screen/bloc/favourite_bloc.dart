@@ -28,7 +28,6 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         emit(LoadedFavoriteState(track));
       } catch (e) {
         emit(ErrorFavoriteState(e));
-        rethrow;
       }
     });
   }

@@ -4,7 +4,6 @@ import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search
 import 'package:spotify_prototype/presentation/screens/search_screen/bloc/search_states.dart';
 import 'package:spotify_prototype/presentation/widgets/search_widget.dart';
 import 'package:spotify_prototype/presentation/widgets/track_widget.dart';
-
 import 'bloc/search_events.dart';
 
 class SearchLayout extends StatefulWidget {

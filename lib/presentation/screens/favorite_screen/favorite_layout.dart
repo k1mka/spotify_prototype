@@ -21,10 +21,7 @@ class _FavoriteLayoutState extends State<FavoriteLayout> {
   }
 
   Future loadList() async {
-    await Future.delayed(const Duration(milliseconds: 400));
-    setState(() {
-      return context.read<FavoriteBloc>().add(LoadFavoriteEvent());
-    });
+    context.read<FavoriteBloc>().add(LoadFavoriteEvent());
   }
 
   @override
@@ -43,9 +40,7 @@ class _FavoriteLayoutState extends State<FavoriteLayout> {
           if (state is LoadedFavoriteState) {
             if (state.favoriteList.isEmpty) return const Center(child: Text('No favorite track'));
             return RefreshWidget(
-              onRefresh: () {
-                return loadList();
-              },
+              onRefresh: loadList,
               child: ListView.builder(
                 shrinkWrap: true,
                 primary: false,

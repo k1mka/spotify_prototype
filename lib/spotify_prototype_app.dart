@@ -6,6 +6,21 @@ import 'package:spotify_prototype/presentation/screens/search_screen/search_scre
 class SpotifyPrototypeApp extends StatelessWidget {
   const SpotifyPrototypeApp({Key? key}) : super(key: key);
 
+  List<PersistentBottomNavBarItem> navBarItems() => [
+        PersistentBottomNavBarItem(
+            icon: const Icon(
+              Icons.play_arrow,
+              color: Colors.green,
+            ),
+            title: 'Playlist'),
+        PersistentBottomNavBarItem(
+            icon: const Icon(
+              Icons.favorite,
+              color: Colors.green,
+            ),
+            title: 'FavouriteList')
+      ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,18 +39,3 @@ class SpotifyPrototypeApp extends StatelessWidget {
     );
   }
 }
-
-List<PersistentBottomNavBarItem> navBarItems() => [
-      PersistentBottomNavBarItem(
-          icon: const Icon(
-            Icons.play_arrow,
-            color: Colors.green,
-          ),
-          title: 'Playlist'),
-      PersistentBottomNavBarItem(
-          icon: const Icon(
-            Icons.favorite,
-            color: Colors.green,
-          ),
-          title: 'FavouriteList')
-    ];

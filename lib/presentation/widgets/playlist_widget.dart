@@ -17,7 +17,7 @@ class PlayListWidget extends StatelessWidget {
       itemBuilder: (_, i) => TrackWidget(
         trackModel: playlist[i],
         onPressed: (bool isLiked) {
-          !isLiked
+          isLiked
               ? context.read<SearchBloc>().add(LikeTrackEvent(playlist[i]))
               : context.read<SearchBloc>().add(DeleteFavoriteEvent(playlist[i]));
         },

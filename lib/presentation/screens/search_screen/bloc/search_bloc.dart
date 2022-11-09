@@ -32,7 +32,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         emit(LoadedSearchedTracksState(track));
       } catch (e) {
         emit(ErrorSearchState(e));
-        rethrow;
       }
     });
   }
